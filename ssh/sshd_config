@@ -1,0 +1,20 @@
+# /etc/ssh/sshd_config
+
+# Prevent root user from logging in
+PermitRootLogin no
+
+# Disallow root login with password
+PasswordAuthentication no
+
+# Prevent empty passwords
+PermitEmptyPasswords no
+
+# Set a timeout of 15 minutes
+ClientAliveInterval 900
+ClientAliveCountMax 0
+
+# Use only SSH protocol version 2
+Protocol 2
+
+# Limit the number of connection attempts
+MaxAuthTries 3
