@@ -14,7 +14,7 @@ if [[ $system == "debian" -o  $system == "Ubuntu*" ]]; then
     apt update & apt upgrade -y
 
     # Install openssh for server
-    apt install openssh -y
+    apt install openssh-server -y
 
     # config ssh connexion
     cp ssh/sshd_config /etc/ssh/sshd_config
@@ -32,6 +32,12 @@ if [[ $system == "debian" -o  $system == "Ubuntu*" ]]; then
     # Open ssh port with tcp
     ufw allow ssh/tcp
     ufw enable
+
+    # Disable IPv6
+    # Désactiver IPv6
+    echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+
 
     echo "Everything is update !"
 else 
