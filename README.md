@@ -4,7 +4,7 @@ Permettre au débutant de découvrir l'openSource et Linux ? travers des outils si
 
 Le site GitHub est en français pour permettre aux personnes non-anglophone de s'initier au monde de l'open source.
 
-===
+---
 
 ## Les Distributions Linux utilisés
 
@@ -19,7 +19,7 @@ Pour le moment, le Git va se concentrer sur les distributions de la Debian (pack
 Ce script permet de faire le minimum pour sécurisée un serveur Linux.
 
 - Installation de Openssh-server avec la configuration suivante [sshd_config](https://github.com/Lhokamn/preparation_serveur/ssh/sshd_config) (modifiable en fonction de vos besoin)
-- Installation de fail2ban avec la configuration suivante [sjail.local](https://github.com/Lhokamn/preparation_serveur/ssh/jail.local) (modifiable en fonction de vos besoin)
+- Installation de fail2ban avec la configuration suivante [jail.local](https://github.com/Lhokamn/preparation_serveur/ssh/jail.local) (modifiable en fonction de vos besoin)
 - Installation de UFW 
 - Désactivation de l'IPv6 ( ? modifier selon vos usages)
 
