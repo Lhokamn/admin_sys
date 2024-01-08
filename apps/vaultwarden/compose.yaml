@@ -1,0 +1,15 @@
+version: '3'
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    volumes:
+      - /srv-data/vw-data:/data
+    ports:
+      - 9443:80
+      - 3012:3012
+    environment:
+      - DOMAIN=${DOMAIN}
+      - WEBSOCKET_ENABLED='true'  # Enable WebSocket notifications.
+      - ADMIN_TOKEN=${VAULTWARDEN_ADMIN_TOKEN}

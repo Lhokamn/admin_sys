@@ -8,7 +8,7 @@ Le site GitHub est en français pour permettre aux personnes non-anglophone de s
 
 ## Navigation
 
-**[Apps](https://doc.cclaudel.fr/apps)** --- **[Docker](https://doc.cclaudel.fr/docker)** --- **[ssh](https://doc.cclaudel.fr/ssh)**
+**[Apps](https://doc.cclaudel.fr/apps)**        **[Docker](https://doc.cclaudel.fr/docker)**        **[ssh](https://doc.cclaudel.fr/ssh)**
 
 ## Les Distributions Linux utilisés
 
@@ -26,7 +26,7 @@ Ce script permet de faire le minimum pour sécuriser un serveur Linux.
 - Installation de fail2ban avec la configuration suivante [jail.local](https://github.com/Lhokamn/preparation_serveur/tree/main/ssh/jail.local) (modifiable en fonction de vos besoin)
 - Installation de UFW 
 - Mise en place d'une adresse IPv4 static
-- Désactivation de l'IPv6 ( ? modifier selon vos usages)
+- Désactivation de l'IPv6 ( à modifier selon vos usages)
 
 ### OpenSSH Server
 - **Description** : OpenSSH Server est une implémentation libre du protocole SSH (Secure Shell) qui permet un accès sécurisé à distance à un système Linux. Il fournit des services d'authentification cryptée et de communication sécurisée sur un réseau non sécurisé.
@@ -43,7 +43,7 @@ Ce script permet de faire le minimum pour sécuriser un serveur Linux.
     
 - **Utilisation typique** : Permet de configurer facilement les règles de pare-feu pour autoriser ou bloquer le trafic réseau sur un système Linux. UFW est souvent utilisé pour limiter l'accès à certaines applications ou services, renforçant ainsi la sécurité du système.
 
-###
+___
 ## Open Source
 
 Un logiciel open source est un logiciel qui respecte les règles de l'Open Source Initiative([opensource.org](https://opensource.org/))

@@ -45,6 +45,8 @@ if [[ $system == "debian" -o  $system == "Ubuntu*" ]]; then
 
     # Install fail2ban
     apt install fail2ban -y
+
+    apt install rsyslog -y 
     cp ssh/jail.local /etc/fail2ban/jail.local
     systemctl restart fail2ban
 
