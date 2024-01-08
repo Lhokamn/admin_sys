@@ -8,7 +8,7 @@ Le site GitHub est en français pour permettre aux personnes non-anglophone de s
 
 ## Navigation
 
-**[Apps](https://github.com/Lhokamn/preparation_serveur/tree/main/apps)** | **[Docker](https://github.com/Lhokamn/preparation_serveur/tree/main/docker)** | **[ssh](https://github.com/Lhokamn/preparation_serveur/tree/main/ssh)**
+**[Apps](https://doc.cclaudel.fr/apps)** --- **[Docker](https://doc.cclaudel.fr/docker)** --- **[ssh](https://doc.cclaudel.fr/ssh)**
 
 ## Les Distributions Linux utilisés
 
