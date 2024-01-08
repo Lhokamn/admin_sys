@@ -1,14 +1,14 @@
 # preparation_serveur
 
-Permettre au dÈbutant de dÈcouvrir l'openSource et Linux ? travers des outils simple.
+Permettre au d√©butant de d√©couvrir l'openSource et Linux √† travers des outils simple.
 
-Le site GitHub est en franÁais pour permettre aux personnes non-anglophone de s'initier au monde de l'open source.
+Le site GitHub est en fran√ßais pour permettre aux personnes non-anglophone de s'initier au monde de l'open source.
 
 ---
 
-## Les Distributions Linux utilisÈs
+## Les Distributions Linux utilisÔøΩs
 
-Pour le moment, le Git va se concentrer sur les distributions de la Debian (packages .deb). Notamment Debian et Ubuntu pour leur faciliter ? prendre en main.
+Pour le moment, le Git va se concentrer sur les distributions de la Debian (packages .deb). Notamment Debian et Ubuntu pour leur faciliter la prise en main.
 
 1. [Site Web Debian](https://www.debian.org/index.fr.html)
 
@@ -16,29 +16,30 @@ Pour le moment, le Git va se concentrer sur les distributions de la Debian (pack
 
 ## Script d'installation
 
-Ce script permet de faire le minimum pour sÈcurisÈe un serveur Linux.
+Ce script permet de faire le minimum pour s√©curiser un serveur Linux.
 
 - Installation de Openssh-server avec la configuration suivante [sshd_config](https://github.com/Lhokamn/preparation_serveur/ssh/sshd_config) (modifiable en fonction de vos besoin)
 - Installation de fail2ban avec la configuration suivante [jail.local](https://github.com/Lhokamn/preparation_serveur/ssh/jail.local) (modifiable en fonction de vos besoin)
 - Installation de UFW 
-- DÈsactivation de l'IPv6 ( ? modifier selon vos usages)
+- Mise en place d'une adresse IPv4 static
+- D√©sactivation de l'IPv6 ( ? modifier selon vos usages)
 
 ### OpenSSH Server
-- **Description** : OpenSSH Server est une implÈmentation libre du protocole SSH (Secure Shell) qui permet un acc?s sÈcurisÈ ? distance ? un syst?me Linux. Il fournit des services d'authentification cryptÈe et de communication sÈcurisÈe sur un rÈseau non sÈcurisÈ.
+- **Description** : OpenSSH Server est une impl√©mentation libre du protocole SSH (Secure Shell) qui permet un acc√®s s√©curis√© √† distance √† un syst√®me Linux. Il fournit des services d'authentification crypt√©e et de communication s√©curis√©e sur un r√©seau non s√©curis√©.
 
-- **Utilisation typique** : Permet aux utilisateurs distants de se connecter en toute sÈcuritÈ ? un serveur et d'exÈcuter des commandes ? distance. Il est essentiel pour l'administration syst?me ? distance.
+- **Utilisation typique** : Permet aux utilisateurs distants de se connecter en toute s√©curit√© √† un serveur et d'ex√©cuter des commandes √† distance. Il est essentiel pour l'administration syst√®me √† distance.
 
 ### Fail2Ban
-- **Description** : Fail2Ban est un syst?me de prÈvention d'intrusion qui surveille les journaux syst?me pour dÈtecter des activitÈs malveillantes rÈpÈtÈes (comme des tentatives de connexion ÈchouÈes) et bloque dynamiquement les adresses IP sources associÈes ? ces activitÈs.
+- **Description** : Fail2Ban est un syst√®me de pr√©vention d'intrusion qui surveille les journaux syst√®me pour d√©tecter des activit√©s malveillantes r√©p√©t√©es (comme des tentatives de connexion √©chou√©es) et bloque dynamiquement les adresses IP sources associ√©es √† ces activit√©s.
 
-- **Utilisation typique** : Prot?ge contre les attaques par force brute en bloquant automatiquement les adresses IP qui montrent des signes d'activitÈ malveillante, renforÁant ainsi la sÈcuritÈ du syst?me.
+- **Utilisation typique** : Prot√®ge contre les attaques par force brute en bloquant automatiquement les adresses IP qui montrent des signes d'activit√© malveillante, renfor√ßant ainsi la s√©curit√© du syst√®me.
 
 ### Uncomplicated Firewall *UFW*
-- **Description** : UFW est une interface en ligne de commande pour iptables, le syst?me de pare-feu netfilter sous Linux. Il vise ? simplifier le processus de configuration d'un pare-feu pour les utilisateurs non experts, tout en offrant une protection robuste.
+- **Description** : UFW est une interface en ligne de commande pour iptables, le syst√®me de pare-feu netfilter sous Linux. Il vise √† simplifier le processus de configuration d'un pare-feu pour les utilisateurs non experts, tout en offrant une protection robuste.
     
-- **Utilisation typique** : Permet de configurer facilement les r?gles de pare-feu pour autoriser ou bloquer le trafic rÈseau sur un syst?me Linux. UFW est souvent utilisÈ pour limiter l'acc?s ? certaines applications ou services, renforÁant ainsi la sÈcuritÈ du syst?me.
+- **Utilisation typique** : Permet de configurer facilement les r√®gles de pare-feu pour autoriser ou bloquer le trafic r√©seau sur un syst√®me Linux. UFW est souvent utilis√© pour limiter l'acc√®s √† certaines applications ou services, renfor√ßant ainsi la s√©curit√© du syst√®me.
 
 ###
 ## Open Source
 
-Un logiciel open source est un logiciel qui respecte les r?gles de l'Open Source Initiative([opensource.org](https://opensource.org/))
+Un logiciel open source est un logiciel qui respecte les r√®gles de l'Open Source Initiative([opensource.org](https://opensource.org/))
