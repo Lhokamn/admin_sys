@@ -6,7 +6,11 @@ Le site GitHub est en français pour permettre aux personnes non-anglophone de s
 
 ---
 
-## Les Distributions Linux utilis�s
+## Navigation
+
+[Apps]((https://github.com/Lhokamn/preparation_serveur/tree/main/ssh) | [Docker](https://github.com/Lhokamn/preparation_serveur/tree/main/docker | [ssh](https://github.com/Lhokamn/preparation_serveur/tree/main/apps)
+
+## Les Distributions Linux utilisés
 
 Pour le moment, le Git va se concentrer sur les distributions de la Debian (packages .deb). Notamment Debian et Ubuntu pour leur faciliter la prise en main.
 
@@ -18,8 +22,8 @@ Pour le moment, le Git va se concentrer sur les distributions de la Debian (pack
 
 Ce script permet de faire le minimum pour sécuriser un serveur Linux.
 
-- Installation de Openssh-server avec la configuration suivante [sshd_config](https://github.com/Lhokamn/preparation_serveur/ssh/sshd_config) (modifiable en fonction de vos besoin)
-- Installation de fail2ban avec la configuration suivante [jail.local](https://github.com/Lhokamn/preparation_serveur/ssh/jail.local) (modifiable en fonction de vos besoin)
+- Installation de Openssh-server avec la configuration suivante [sshd_config](https://github.com/Lhokamn/preparation_serveur/tree/main/ssh/sshd_config) (modifiable en fonction de vos besoin)
+- Installation de fail2ban avec la configuration suivante [jail.local](https://github.com/Lhokamn/preparation_serveur/tree/main/ssh/jail.local) (modifiable en fonction de vos besoin)
 - Installation de UFW 
 - Mise en place d'une adresse IPv4 static
 - Désactivation de l'IPv6 ( ? modifier selon vos usages)
