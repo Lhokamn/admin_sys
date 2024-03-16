@@ -1,5 +1,9 @@
 # Liste des applications 
 
-- [vaultwarden](https://doc.cclaudel.fr/apps/vaultwarden)
-- [privateBin](https://doc.cclaudel.fr/apps/PrivateBin)
+- [apache](https://doc.cclaudel.fr/apps/apache)
+- [Apache Guacamole](https://doc.cclaudel.fr/apps/apache_guacamole)
 - [gitlab](https://doc.cclaudel.fr/apps/GitLab)
+- [openLdap](https://doc.cclaudel.fr/apps/openldap)
+- [privateBin](https://doc.cclaudel.fr/apps/PrivateBin)
+- [vaultwarden](https://doc.cclaudel.fr/apps/vaultwarden)
+
