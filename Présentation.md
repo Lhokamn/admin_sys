@@ -60,3 +60,11 @@
 
 # Pourquoi toi et pas un autre ?
 - Je suis quelqu'un qui n'hésite pas à saisir toutes les opportunités qui se présentent à lui
+
+# Quels obstacles j'ai surmonté pendant les études ?
+- Parler des stratégies qui ont permis de le surmonter
+
+# Qu'est ce qu'on fait en dehors de la formation ?
+
+# Conseil
+Si on ne sais pas, ce n'est pas grave, il faut savoir argumenter et défendre ton point de vue
