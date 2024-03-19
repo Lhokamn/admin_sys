@@ -6,12 +6,21 @@ sudo apt-get update
 # Installation packages
 sudo apt-get install build-essential libcairo2-dev libjpeg62-dev  libpng-dev libtool-bin uuid-dev libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev freerdp2-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libwebsockets-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev -y
 
+## Variable
+versionAG="1.5.3"
+versionTomcat="9"
+
+DB_NAME="guacadb"
+DB_USER="guaca_nachos'@'localhost"
+DB_PASSWORD="P@ssword!"
+
+
 # ===================================================== #
 #                                                       #
 #        Installation du serveur apache guacamole       #
 #                                                       #
 # ===================================================== # 
-versionAG="1.5.3"
+
 
 # R�cup�ration des fichiers source dans le dossier tmp sous forme d'archive
 cd /tmp
@@ -50,8 +59,6 @@ sudo mkdir -p /etc/guacamole/{extensions,lib}
 #                                                       #
 # ===================================================== # 
 
-versionTomcat="9"
-
 # Installation des paquets
 sudo apt install tomcat$versionTomcat tomcat$versionTomcat-admin tomcat$versionTomcat-common tomcat$versionTomcat-user -y
 
@@ -75,18 +82,23 @@ sudo systemctl restart tomcat$versionTomcat guacd
 sudo apt-get install mariadb-server -y
 
 # S�curisation de l'installation
-sudo mysql_secure_installation
+sudo mysql_secure_installation -n
 
 # Connexion � la bdmysql
 mysql -u root -p
 
 
 ## Commande � rentrer dans la bd
-# CREATE DATABASE guacadb;
-# CREATE USER 'guaca_nachos'@'localhost' IDENTIFIED BY 'P@ssword!';
-# GRANT SELECT,INSERT,UPDATE,DELETE ON guacadb.* TO 'guaca_nachos'@'localhost';
-# FLUSH PRIVILEGES;
-# EXIT;
+# Variables
+
+
+# Créer la base de données
+sudo mysql -u "root" -e "CREATE DATABASE $DB_NAME;"
+
+# Créer l'utilisateur et lui accorder les privilèges
+sudo mysql -u "root" -e "CREATE USER '$DB_USER' IDENTIFIED BY '$DB_PASSWORD';"
+sudo mysql -u "root" -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER';"
+sudo mysql -u "root" -e "FLUSH PRIVILEGES;"
 
 # Ajout de l'extension mysql
 cd /tmp
@@ -110,24 +122,22 @@ sudo cp mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar /etc/guacamole/lib
 
 # On copie la structure d'apache guacamole dans la bd cr�e
 cd guacamole-auth-jdbc-$versionAG/mysql/schema/
-cat *.sql | mysql -u root -p guacadb
+cat *.sql | sudo mysql -u root -p guacadb
 
-sudo nano /etc/guacamole/guacamole.properties
+sudo tee -a /etc/guacamole/guacamole.properties > /dev/null <<EOF
+mysql-hostname: 127.0.0.1
+mysql-port: 3306
+mysql-database: guacadb
+mysql-username: guaca_nachos
+mysql-password: P@ssword!
+EOF
 
-## MySQL � modifier avec les infos rentr�s
-# mysql-hostname: 127.0.0.1
-# mysql-port: 3306
-# mysql-database: guacadb
-# mysql-username: guaca_nachos
-# mysql-password: P@ssword!
+sudo tee -a /etc/guacamole/guacd.conf > /dev/null <<EOF
+[server] 
+bind_host = 0.0.0.0
+bind_port = 4822
+EOF
 
-# On modifie la conf
-sudo nano /etc/guacamole/guacd.conf
-
-## Code � int�grer
-# [server] 
-# bind_host = 0.0.0.0
-# bind_port = 4822
 
 # On red�marre tous les services
 sudo systemctl restart tomcat$versionTomcat guacd mariadb
