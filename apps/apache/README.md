@@ -35,7 +35,7 @@ sudo nano /etc/apache2/sites-available/mon_domaine.conf
 ```conf
 <VirtualHost *:80>
    ServerName doc.cclaudel.fr
-   DocumentRoot /var/www/<mondomaine>
+   DocumentRoot /var/www/doc
 </VirtualHost>
 ```
 
@@ -93,7 +93,7 @@ Il faut ensuite modifier le fichier virtual host
 ```conf
 <VirtualHost *:443>
    ServerName <mon_domaine>
-   DocumentRoot /var/www/<your_domain_or_ip>
+   DocumentRoot /var/www/doc
 
    SSLEngine on
    SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt
@@ -182,7 +182,7 @@ RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
     Include /etc/letsencrypt/options-ssl-apache.conf
 </VirtualHost>
 ```
-
+Le script crée également la tache planifié de renouvellement du certificat. La tâche est dispo sur la machine locale ``/etc/cron.d/certbot``
 
 ## Exemple de conf
 
@@ -212,6 +212,6 @@ RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 
 <VirtualHost *:443>
     ServerName doc.cclaudel.fr
-    DocumentRoot /var/www/<mondomaine>
+    DocumentRoot /var/www/doc
 </VirtualHost>
 ```
