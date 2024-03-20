@@ -34,7 +34,7 @@ sudo nano /etc/apache2/sites-available/mon_domaine.conf
 
 ```conf
 <VirtualHost *:80>
-   ServerName <mondomaine>
+   ServerName doc.cclaudel.fr
    DocumentRoot /var/www/<mondomaine>
 </VirtualHost>
 ```
@@ -58,7 +58,7 @@ sudo a2enmod proxy_http
 Dans le virtual host :
 ```conf
 <VirtualHost *:80>
-    ServerName <mon_domaine>
+    ServerName doc.cclaudel.fr
 
     ProxyPreserveHost On
     ProxyPass / http://localhost:<mon_port>/
@@ -104,14 +104,94 @@ Bien penser à mettre le port d'écoute sur 443
 
 ### Let's Encrypt (prod)
 
+IL faut installer les paquets suivants 
+
+```shell
+sudo apt-get update
+sudo apt-get  install certbot python3-certbot-apache
+```
+
+Ensuite on fait la requête du certificat
+```shell
+certbot --apache -d doc.cclaudel.fr
+```
+```
+certbot --apache -d project.cclaudel.fr
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): lhokam.claudel@gmail.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf. You must
+agree in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: y
+Account registered.
+Requesting a certificate for project.cclaudel.fr
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/project.cclaudel.fr/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/project.cclaudel.fr/privkey.pem
+This certificate expires on 2024-06-18.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+Deploying certificate
+Successfully deployed certificate for project.cclaudel.fr to /etc/apache2/sites-enabled/project.conf
+Congratulations! You have successfully enabled HTTPS on https://project.cclaudel.fr
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+```
+
+Vérifier que le fichier de configuration récupère bien les certificats de let's encrypt
+```
+<VirtualHost *:80>
+    ServerName doc.cclaudel.fr
+    Redirect permanent / https://doc.cclaudel.fr/
+RewriteEngine on
+RewriteCond %{SERVER_NAME} =doc.cclaudel.fr
+RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+
+<VirtualHost *:443>
+
+    ServerName doc.cclaudel.fr
+
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:8080/
+    ProxyPassReverse / http://localhost:8080/
+
+    SSLEngine on
+
+    SSLCertificateFile /etc/letsencrypt/live/doc.cclaudel.fr/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/doc.cclaudel.fr/privkey.pem
+    Include /etc/letsencrypt/options-ssl-apache.conf
+</VirtualHost>
+```
+
 
 ## Exemple de conf
 
 1. Avec reverse proxy + SSL autosigné
+
 ```conf
 
 <VirtualHost *:443>
-    ServerName guacamole.lab.dom
+    ServerName doc.cclaudel.fr
 
     ProxyPreserveHost On
     ProxyPass / http://localhost:8080/
@@ -121,18 +201,17 @@ Bien penser à mettre le port d'écoute sur 443
     SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt
     SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
 </VirtualHost>
-
 ```
 
 2. Forcer l'utilisation du ports 443 à la place du 80
 ```conf
 <VirtualHost *:80>
-    ServerName guacamole.labminou.dom
-    Redirect permanent / https://guacamole.labminou.dom/
+    ServerName doc.cclaudel.fr
+    Redirect permanent / https://doc.cclaudel.fr/
 </VirtualHost>
 
 <VirtualHost *:443>
-    ServerName guacamole.labminou.dom
+    ServerName doc.cclaudel.fr
     DocumentRoot /var/www/<mondomaine>
 </VirtualHost>
 ```
