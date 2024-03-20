@@ -1,11 +1,15 @@
+#!/bin/bash -e
+
+privateBinVersion="1.7.1"
+
 #Installation de PrivateBin sur la machine 
-apt install apache2 php -y 
-curl https://github.com/PrivateBin/PrivateBin/archive/refs/tags/1.6.2.zip # A mettre à jour pour avoir la dernière version 
+sudo apt install apache2 php -y 
+wget https://github.com/PrivateBin/PrivateBin/archive/refs/tags/$privateBinVersion.zip # A mettre à jour pour avoir la dernière version 
 cd /var/www/html 
-unzip /home/root/PrivateBin-1.6.2.zip 
-mv PrivateBin-1.6.2/ PrivateBin 
-chown -R www-data:www-data PrivateBin 
-chmod -R g+rw PrivateBin 
+sudo unzip /home/root/$privateBinVersion
+sudo mv $privateBinVersion PrivateBin 
+sudo chown -R www-data:www-data PrivateBin 
+sudo chmod -R g+rw PrivateBin 
 
  
 

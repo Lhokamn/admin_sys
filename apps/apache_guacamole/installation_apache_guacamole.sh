@@ -1,7 +1,7 @@
 # Script s'installation d'apache guacamole 1.5.3
 # aide d'installation : https://www.it-connect.fr/tuto-apache-guacamole-bastion-rdp-ssh-debian/
 
-sudo apt-get update
+sudo apt update ; sudo apt upgrade -y
 
 # Installation packages
 sudo apt-get install build-essential libcairo2-dev libjpeg62-dev  libpng-dev libtool-bin uuid-dev libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev freerdp2-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libwebsockets-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev -y
@@ -127,9 +127,9 @@ cat *.sql | sudo mysql -u root -p guacadb
 sudo tee -a /etc/guacamole/guacamole.properties > /dev/null <<EOF
 mysql-hostname: 127.0.0.1
 mysql-port: 3306
-mysql-database: guacadb
-mysql-username: guaca_nachos
-mysql-password: P@ssword!
+mysql-database: $DB_NAME
+mysql-username: $DB_USER
+mysql-password: $DB_PASSWORD
 EOF
 
 sudo tee -a /etc/guacamole/guacd.conf > /dev/null <<EOF
