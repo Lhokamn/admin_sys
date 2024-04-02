@@ -5,15 +5,19 @@
 - BUT Informatique à lyon 1 option DACS
 - Alternace depuis 2 ans à Endrix -> Boite expertise comptable, conseil et audit sur l'axe Amiens - Lyon - Marseille
     - Découverte du monde du travail
+    - équipe de 5 personnes
+    - Incident
+    - Gestion du parc
+    - Déplacement
     - Projet
 
 # Pourquoi j'ai choisi l'informatique
 - J'aime bien comprendre le fonctionnement des choses / Curiosité
 - Domaine fascinant ou beaucoup de chose sont réalibles
+- Stage ainfo service + Thomas
 
 # Pourquoi le BUT et pas prépa ?
 - BUT permettait de faire de l'alternance
-- Pas de sacrifice de vie
 - Permettait également un coté plus applicatif de ce que nous voyons en classe
 
 # Pourquoi être ingénieur ?
@@ -23,11 +27,19 @@
 - Savoir diriger une équipe est très important car la plupart des projets informatiques se font en équipe
 
 # Pourquoi CPE ?
+- école connu et reconnu 
+- Valeur
+    - Humanisme
+    - Honnêteté
+    - Coopération
+    - Engagement
+    - Ouverture
+- journée portes ouvertes :
+    - Locaux bien pensés pour apprendre
+    - Bon feeling personne rencontrés
+- Bon retour de personne étant à CPE Lyon
+- Proposition de l'alternace
 - C'est à lyon
-- école bien reconnu pour ses formations
-- Un rythme d'alternace qui est déjà celui que j'ai 
-- Les valeur de l'école
-- Les locaux sont aussi un bon espace d'apprentissage 
 
 # Pourquoi l'alternance ?
 - Allié théorie et pratique
@@ -37,34 +49,29 @@
 
 # Tes points forts et tes points faibles ?
 
-## Points forts :
-- a l'écoute
-- Dynamique
-- Autonome
-- interessé
-- intrigué
-- curieux
-- esprit d'initiative
-
-## Points faibles
-- Communication
-- Documentation de mes solutions (repousser)
-
-| - | - |
 | **Points Fort** | **Points faible** |
 | - | - |
 | a l'écoute </br> Dynamique </br> Autonome </br> interessé </br> intrigué </br> curieux </br> esprit d'initiative | Communication </br> Documentaiton de mes solutions (souvent repousser) |
 
+
+
 # Qu'est ce que j'aimerais comme entreprise ?
-- De préférence une entreprise reconnue et qui a des missions à l'international
+- Entreprise avec un grand servic informatique
+- reconnu à l'étranger
 
 # Pourquoi toi et pas un autre ?
-- Je suis quelqu'un qui n'hésite pas à saisir toutes les opportunités qui se présentent à lui
+- Acquisiton d'expérience
+- Confiance de l'équipe réciproque
+- idées innovantes
+- Envie de continuer
+
 
 # Quels obstacles j'ai surmonté pendant les études ?
-- Parler des stratégies qui ont permis de le surmonter
+- Rythme alternace 
 
 # Qu'est ce qu'on fait en dehors de la formation ?
+- Associatif
+- sport
 
 # Conseil
 Si on ne sais pas, ce n'est pas grave, il faut savoir argumenter et défendre ton point de vue
