@@ -5,6 +5,7 @@
 - [docker](https://doc.cclaudel.fr/apps/docker)
 - [gitlab](https://doc.cclaudel.fr/apps/GitLab)
 - [glpi](https://doc.cclaudel.fr/apps/glpi)
+- [ocs_invetory](https://doc.cclaudel.fr/apps/ocs_inventory)
 - [openLdap](https://doc.cclaudel.fr/apps/openldap)
 - [privateBin](https://doc.cclaudel.fr/apps/PrivateBin)
 - [vaultwarden](https://doc.cclaudel.fr/apps/vaultwarden)
