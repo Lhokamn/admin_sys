@@ -6,11 +6,16 @@ Permettre au débutant de découvrir l'openSource et Linux à travers des outils
 
 Le site GitHub est en français pour permettre aux personnes non-anglophone de s'initier au monde de l'open source.
 
+
+
 ---
 
 ## Navigation
 
-**[Apps](https://doc.cclaudel.fr/apps)** \/ **[Docker](https://doc.cclaudel.fr/docker)** \/ **[ssh](https://doc.cclaudel.fr/ssh)**
+- **[apps](https://doc.cclaudel.fr/apps)**
+- **[ssh](https://doc.cclaudel.fr/ssh)** 
+- **[notions](https://doc.cclaudel.fr/notions)**
+- **[scripts](https://doc.cclaudel.fr/scripts)**
 
 ## Les Distributions Linux utilisés
 
