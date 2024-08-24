@@ -1,0 +1,54 @@
+version: '3'
+services:
+  snappymail:
+    container_name: snappymail
+    image: djmaze/snappymail:latest
+    volumes:
+      - /usr/webmail/Snappymail/data/:/var/lib/snappymail
+    ports:
+      - 8888:8888
+    restart: unless-stopped
+
+  mailserver:
+    image: ghcr.io/docker-mailserver/docker-mailserver:latest
+    container_name: mailserver
+    # Provide the FQDN of your mail server here (Your DNS MX record should point to this value)
+    hostname: mail.cclaudel.fr
+    ports:
+      - "25:25"    # SMTP  (explicit TLS => STARTTLS, Authentication is DISABLED => use port 465/587 instead)
+      #- "143:143"  # IMAP4 (explicit TLS => STARTTLS)
+      - "465:465"  # ESMTP (implicit TLS)
+      #- "587:587"  # ESMTP (explicit TLS => STARTTLS)
+      - "993:993"  # IMAP4 (implicit TLS)
+      #- "11334:11334"  # RSPAMD
+    volumes:
+      - /usr/webmail/mailserverdata/:/var/mail/
+      - /usr/webmail/mailservermailstate/:/var/mail-state/
+      - /usr/webmail/mailserverlogs/:/var/log/mail/
+      - /usr/webmail/mailserverconfig/:/tmp/docker-mailserver/
+      - /etc/letsencrypt/:/etc/letsencrypt
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - ENABLE_RSPAMD=1
+      - ENABLE_POLICYD_SPF=0
+      - ENABLE_CLAMAV=1
+      - ENABLE_FAIL2BAN=1
+      - ENABLE_SPAMASSASSIN=0
+      # - ENABLE_SPAMASSASSIN_KAM=1
+      - SSL_TYPE=letsencrypt
+      - SPOOF_PROTECTION=1
+      - TZ=Europe/Paris
+      - ENABLE_AMAVIS=0
+      - ENABLE_OPENDKIM=0
+      - ENABLE_OPENDMARC=0
+      - POSTMASTER_ADDRESS=contact@cclaudel.fr
+      - ENABLE_UPDATE_CHECK=1
+      - UPDATE_CHECK_INTERVAL=1d
+    cap_add:
+      - NET_ADMIN # For Fail2Ban to work
+    restart: always
+    stop_grace_period: 1m
+    healthcheck:
+      test: "ss --listening --tcp | grep -P 'LISTEN.+:smtp' || exit 1"
+      timeout: 3s
+      retries: 0

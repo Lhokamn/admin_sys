@@ -5,7 +5,7 @@ echo "Start preparation"
 #System detection for command
 system=$OSTYPE
 
-if [[ $system == "debian" -o  $system == "Ubuntu*" ]]; then
+if [[ $system == "debian" ]]; then
 
     echo "Utilisateur ssh"
     read userssh
@@ -59,8 +59,12 @@ if [[ $system == "debian" -o  $system == "Ubuntu*" ]]; then
 
     # Disable IPv6
     # Désactiver IPv6
+    echo "# Disabling the IPv6" >> /etc/sysctl.conf
     echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
     echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
+
+    update-initramfs -u
 
 
     echo "Everything is update !"
