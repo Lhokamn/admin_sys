@@ -63,3 +63,14 @@ useradd -m -g webmailSave -s /bin/bash wssa
 passwd wssa
 usermod -aG sshAuthorize wssa
 ```
+
+Création d'un utilisateur dans mailserver
+```sh
+email add user@domain password
+```
+
+
+Génration des clés dkim :
+```sh
+setup.sh config dkim
+```
