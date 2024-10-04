@@ -2,74 +2,59 @@
 
 echo "Start preparation"
 
-#System detection for command
-system=$OSTYPE
+# Variable modifiable
+user="admcld"
+userSSHGroup="ssh_users"
 
-if [[ $system == "debian" ]]; then
+# Variables
 
-    echo "Utilisateur ssh"
-    read userssh
+userPasswd=(openssl rand -hex 20)
+cryptUserPasswd=$(perl -e 'print crypt($ARGV[0], "password")' $userPasswd)
+
+## Start Script
+
+echo "Starting script"
+
+echo "creation of ssh user : $user"
+groupadd $userSSHGroup
+useradd -m -G $userSSHGroup -p $cryptUserPasswd 
+
+
+echo "Dectection OS, packages will be adapt"
+
+. /etc/os-release
+    os_name="$NAME"
+    os_version="$VERSION"
+
+if [[ $system == "Debian*" ]]; then
 
     # Update Packages
-    apt update & apt upgrade -y
-
-    # Network configuration
-    echo "Adresse IPv4"
-    read IPv4
-
-    echo "Entrez masque sous réseaux"
-    read mask
-
-    echo "Passerelle par défaut"
-    read gateway
-
-    echo "Interface"
-    read networkInterface
-
-    echo "auto $networkInterface \n
-    iface $networkInterface inet static \n
-    address $IPv4 \n
-    netmask $mask \n
-    gateway $gateway" >> /etc/network/interfaces
-
-    systemctl restart networking
-
+    apt update & apt upgrade -y > /dev/null
 
     # Install openssh for server
-    apt install openssh-server -y
+    apt install openssh-server fail2ban ufw -y > /dev/null
 
-    # config ssh connexion
-    cp ssh/sshd_config /etc/ssh/sshd_config
-    echo "AllowUsers $userssh" >> /etc/ssh/sshd_config
-    systemctl restart ssh
+elif [[ $system == "" ]]; then
 
-    # Install fail2ban
-    apt install fail2ban -y
-
-    apt install rsyslog -y 
-    cp ssh/jail.local /etc/fail2ban/jail.local
-    systemctl restart fail2ban
-
-    # Install ufw firewall
-    apt install ufw -y
-
-    # Open ssh port with tcp
-    ufw allow ssh/tcp
-    ufw enable
-
-    # Disable IPv6
-    # Désactiver IPv6
-    echo "# Disabling the IPv6" >> /etc/sysctl.conf
-    echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
-    echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
-    echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
-
-    update-initramfs -u
-
-
-    echo "Everything is update !"
 else 
     echo "unrecognize system"
 
 fi
 
+echo "Fin de l'installation des packages"
+
+# config ssh connexion
+cp ssh/sshd_config /etc/ssh/sshd_config
+echo "AllowGroups $userSSHGroup" >> /etc/ssh/sshd_config
+systemctl restart sshd
+
+# Open ssh port with tcp
+ufw allow ssh/tcp
+ufw enable
+
+# Disable IPv6
+echo "# Disabling the IPv6" >> /etc/sysctl.conf
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
+update-initramfs -u
