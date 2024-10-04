@@ -1,12 +1,17 @@
 [DEFAULT]
+
+#ignoreip = 
 bantime = 3600
 findtime = 3600
 maxretry = 3
 enabled = true
 banaction = ufw
+allowipv6 = false
+sshd_file = /var/log
 
 [sshd]
 mode = normal
 port = ssh
-logpath = %(sshd_log)s
-backend = %(sshd_backend)s
+filter = sshd
+logpath = %(sshd_file)/sshd.log
+backend = %(sshd_file)/backend_sshd.log

@@ -6,23 +6,21 @@ echo "Start preparation"
 user="admcld"
 userSSHGroup="ssh_users"
 
-# Variables
-
-userPasswd=(openssl rand -hex 20)
-cryptUserPasswd=$(perl -e 'print crypt($ARGV[0], "password")' $userPasswd)
-
-osdetected=$true
-
 ## Start Script
 
 echo "Starting script"
 
 echo "creation of ssh user : $user"
 groupadd $userSSHGroup
+userPasswd=(openssl rand -hex 20)
+cryptUserPasswd=$(perl -e 'print crypt($ARGV[0], "password")' $userPasswd)
 useradd -m -G $userSSHGroup -p $cryptUserPasswd 
 
 
 echo "Dectection OS, packages will be adapt"
+
+# By default, os_detected is at true because he don't have to change it at any os, we change it only if os was not detected
+osdetected=$true
 
 . /etc/os-release
     os_name="$NAME"
@@ -50,13 +48,19 @@ if [[ $osdetected ]]
 
     echo "configuration sshd"
     # config ssh connexion
+    # awk '{gsub(/PermitRootLogin yes/, "PermitRootLogin no"); print}' /etc/ssh/sshd_config > /etc/ssh/sshd_config  # Remplacement de la valeur
+    # awk '{gsub(/#MaxAuthTries 6/, "MaxAuthTries 3"); print}' /etc/ssh/sshd_config > /etc/ssh/sshd_config          # Remplacement de la valeur
+    # awk '{gsub(/#MaxSessions 10/, "MaxSessions 3"); print}' /etc/ssh/sshd_config > /etc/ssh/sshd_config           # Remplacement de la valeur
     echo "AllowGroups $userSSHGroup" >> /etc/ssh/sshd_config
     systemctl restart sshd > /dev/null
 
-    echo "Firewall configuratio"
+    echo "Firewall configuration"
     # Open ssh port with tcp
     ufw allow ssh/tcp > /dev/null
     ufw enable > /dev/null
+
+    echo "fail2ban configuration"
+    wget -P /etc/fail2ban/ https://doc.cclaudel.fr/ssh/jail.local
 
     echo "Disabling IPv6"
     # Disable IPv6
