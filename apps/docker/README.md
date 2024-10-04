@@ -27,7 +27,7 @@ apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docke
 apt install docker-compose -y
 ```
 
-Télécharger le script [ici](https://doc.cclaudel.fr/apps/docker/docker_installation.sh)
+Télécharger le script [ici](https://doc.cclaudel.fr/apps/docker/installation.sh)
 
 ## Docker
 

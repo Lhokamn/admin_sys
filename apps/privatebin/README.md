@@ -18,7 +18,7 @@ C'est dans ce but que cette app à été créer.
 Il exite plusieurs façon de lancer une instance privateBin
 
 ### Application natif
-Il y a la possibilité d'installé private Bin en natif sur la machine hôte avec le script d'installation présent [ici](https://github.com/Lhokamn/admin_sys/tree/main/apps/privatebin/installation_PrivateBin.sh)
+Il y a la possibilité d'installé private Bin en natif sur la machine hôte avec le script d'installation présent [ici](https://doc.cclaudel.fr/apps/privatebin/installation.sh)
 
 ### Docker
 Il est également possible de démarrez cette instance avec du [docker](https://doc.cclaudel.fr/docker/). Il est possible également que le docker soit pré-installé sur un nas.
