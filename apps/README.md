@@ -9,7 +9,7 @@
 - [nginx proxy manager](https://doc.cclaudel.fr/apps/nginx_proxy_manager)
 - [ocs_invetory](https://doc.cclaudel.fr/apps/ocs_inventory)
 - [openLdap](https://doc.cclaudel.fr/apps/openldap)
-- [privateBin](https://doc.cclaudel.fr/apps/privateBin)
+- [privateBin](https://doc.cclaudel.fr/apps/privatebin)
 - [vaultwarden](https://doc.cclaudel.fr/apps/vaultwarden)
 - [webmail](https://doc.cclaudel.fr/apps/webmail)
 
