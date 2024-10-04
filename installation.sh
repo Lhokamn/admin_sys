@@ -28,6 +28,8 @@ echo "Dectection OS, packages will be adapt"
 
 if [[ $system == "Debian*" ]]; then
 
+    echo "Debian OS detected, start installation application"
+
     # Update Packages
     apt update & apt upgrade -y > /dev/null
 
@@ -41,20 +43,25 @@ else
 
 fi
 
-echo "Fin de l'installation des packages"
+echo "Everything is up to date"
 
+echo "configuration sshd"
 # config ssh connexion
 cp ssh/sshd_config /etc/ssh/sshd_config
 echo "AllowGroups $userSSHGroup" >> /etc/ssh/sshd_config
 systemctl restart sshd
 
+echo "Firewall configuratio"
 # Open ssh port with tcp
 ufw allow ssh/tcp
 ufw enable
 
+echo "Disablong IPv6"
 # Disable IPv6
 echo "# Disabling the IPv6" >> /etc/sysctl.conf
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
 update-initramfs -u
+
+echo "You server is Ready"
