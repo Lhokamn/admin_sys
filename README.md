@@ -13,7 +13,7 @@ Le site GitHub est en français pour permettre aux personnes non-anglophone de s
 ## Navigation
 
 - **[apps](https://doc.cclaudel.fr/apps)**
-- **[services](https://doc.cclaudel.fr/configuration)**
+- **[configurations](https://doc.cclaudel.fr/configurations)**
 
 ## Les Distributions Linux utilisés
 
