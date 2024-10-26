@@ -1,6 +1,6 @@
 # Admin Sys
 
-<link rel="icon" href="https://example.com/path/to/your/favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 
 Permettre au débutant de découvrir l'openSource et Linux à travers des outils simple.
 
@@ -13,9 +13,7 @@ Le site GitHub est en français pour permettre aux personnes non-anglophone de s
 ## Navigation
 
 - **[apps](https://doc.cclaudel.fr/apps)**
-- **[ssh](https://doc.cclaudel.fr/ssh)** 
-- **[notions](https://doc.cclaudel.fr/notions)**
-- **[scripts](https://doc.cclaudel.fr/scripts)**
+- **[services](https://doc.cclaudel.fr/configuration)**
 
 ## Les Distributions Linux utilisés
 
