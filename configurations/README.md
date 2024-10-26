@@ -1,6 +1,6 @@
 # Sommaire configuration
 
-- [dhcp](https://doc.cclaudel.fr/configuration/dhcp)
-- [dns](https://doc.cclaudel.fr/configuration/dns)
-- [linux comme frontend](https://doc.cclaudel.fr/configuration/frontend)
-- [ssh](https://doc.cclaudel.fr/configuration/ssh)
+- [dhcp](https://doc.cclaudel.fr/configurations/dhcp)
+- [dns](https://doc.cclaudel.fr/configurations/dns)
+- [linux comme frontend](https://doc.cclaudel.fr/configurations/frontend)
+- [ssh](https://doc.cclaudel.fr/configurations/ssh)
