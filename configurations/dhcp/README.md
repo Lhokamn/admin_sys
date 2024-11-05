@@ -14,6 +14,7 @@ Lors de l'installation, des erreurs vont se produire car le service n'est pas co
 ```sh
 $ sudo vi /etc/default/isc-dhcp-server
 ```
+
 ```conf
 # Aller a ces lignes là :
 INTERFACESv4="<interface>"
