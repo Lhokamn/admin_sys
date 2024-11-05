@@ -25,6 +25,7 @@ Il faut aller modifier dans le fichier de configuration, le nom de l'interface o
 ```sh
 $ sudo vi /etc/dhcp/dhcpd.conf
 ```
+
 ```conf
 # dhcpd.conf
 #
